@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+    php:
+        container_name: app
+        build:
+            context: .
+            dockerfile: ./docker/dev/app/Dockerfile
+        volumes:
+            - .:/var/www/
+        depends_on:
+            - mysql
+        links:
+            - mysql
+        networks:
+            - backend
+        ports:
+            - 80:80
+
+    mysql:
+        image: mysql
+        container_name: mysql
+        environment:
+            - MYSQL_DATABASE=laravel
+            - MYSQL_ROOT_PASSWORD=root
+        volumes:
+            - php-store:/var/lib/mysql
+            - ./docker/dev/mysql/conf_d/my.cnf:/etc/mysql/my.cnf
+        ports:
+            - 3306:3306
+        networks:
+            - backend
+
+volumes:
+    php-store:
+    php-testing-store:
+networks:
+    backend:
+        driver: bridge
