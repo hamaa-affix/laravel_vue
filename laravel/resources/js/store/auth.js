@@ -8,7 +8,11 @@ const mutations = {
   }
 };
 
-const getters = {};
+const getters = {
+  // !!は真偽値に変換している。この場合stateに値があればtureを返す
+  check: state => !! state.user,
+  username: state => state.user ?  state.user.name : ''
+};
 
 const actions = {
   async register (context, data) {
@@ -22,6 +26,12 @@ const actions = {
   async logout (context) {
     const response = await axios.post('/api/logout')
     context.commit('setUser', null)
+  },
+  async currentUser(context) {
+    const response = await axios.get('api/user');
+    // axiosで取得したデータが存在いれば、そのまま代入、無ければnull
+    const user = response.data || null;
+    context.commit('setUser', user);
   }
 };
 
