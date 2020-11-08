@@ -4,6 +4,7 @@ import store from '../store/store.js'
 
 import PhotoList from '../pages/PhotoList.vue';
 import Login from '../pages/Login.vue';
+import SystemErrot from '../pages/errors/System.vue'
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,10 @@ export default new VueRouter ({
           next()
         }
       }
+    },
+    {
+      path: '/500',
+      component: SystemErrot
     }
   ]
 })
