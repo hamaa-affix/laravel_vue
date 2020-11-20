@@ -14,7 +14,7 @@ const mutations = {
   setApiStatus(state, status) {
     state.apiStatus = status
   },
-  setLoginErrorMessages(state, messages) {
+  setLoginErrorMessages(state, messages) {ds
     state.loginErrorMessages = messages
   },
   setRegisterErrorMessages(state, message) {
