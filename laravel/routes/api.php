@@ -28,3 +28,8 @@ Route::get('/user', function () {
 })->name('user');
 
 Route::post('/photos', 'PhotoController@create')->name('photo.create');
+
+// 写真一覧
+Route::get('/photos', 'PhotoController@index')->name('photo.index');
+//写真ダウンロード
+Route::get('/photos/{photo}/download', 'PhotoController@download');
