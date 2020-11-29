@@ -12,13 +12,20 @@ Vue.use(VueRouter);
 
 export default new VueRouter ({
   mode: 'history',
+  crollBehavior () {
+    return { x: 0, y: 0 }
+  },
   routes:[
     {
       path: '/',
-      component: PhotoList
+      component: PhotoList,
+      props: route => {
+        const page = route.query.page
+        return { page: /^[1-9][0-9]*$/.test(page) ? page * 1 : 1 }
+      }
     },
     {
-      path: '/hoto/:id', //:id は URL の変化する部分（ここでは写真ID）
+      path: '/photo/:id', //:id は URL の変化する部分（ここでは写真ID）
       component: PhotoDetail,
       //変数部分（写真IDの値）を props として受け取ることを意味します。
       props: true

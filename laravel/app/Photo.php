@@ -19,6 +19,8 @@ class Photo extends Model
 		'id', 'owner', 'url',
 	];
 
+	protected $perPage = 2;
+
 	/** プライマリキーの型 */
 	protected $keyType = 'string';
 
