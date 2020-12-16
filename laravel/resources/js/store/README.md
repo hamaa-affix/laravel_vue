@@ -74,16 +74,20 @@ const state = {
    user: ''
 }
 ```
+
+## mutations
 - mutationsでデータの更新をおこう。(fromt側から取得してきたdata)
 	-  mutationsの第１引数は同じファイル内で定義している、stateをとる
 	-  第２引数は任意の値をとる
 ```
 const mutations = {
-   setUser(state, user) {
-      state.user = user
+   setUser(state名,　data) {
+      state.user = data
    }
 }
 ```
+
+## action
 - actionsでbacckendと通信を行いでデータのやりとりを行う
 	- 第一引数はcontextをとる。これはcontextオブジェクトをとっている.コンテキストオブジェクトにはミューテーションを呼び出すための commit メソッドなどが入っている
 
