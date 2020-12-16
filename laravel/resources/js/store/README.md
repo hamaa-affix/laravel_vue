@@ -115,3 +115,12 @@ methos: {
 	}
 }
 ```
+
+## actions
+- front側のVuexへのデータの参方法
+- $store.gettersで呼び出すことができる。
+```
+   isLogin () {
+      return this.$store.getters['auth/check']
+    },
+```
